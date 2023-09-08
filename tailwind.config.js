@@ -7,11 +7,18 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      colors: {
+        "dark-gray": "hsl(0, 0%, 63%)",
+        "black": "hsl(0, 0%, 0%)",
+        "white": "hsl(0, 0%, 100%)",
+        "very-dark-gray": "hsl(0, 0%, 27%)",
       },
+      fontSize: {
+        rem: "12px"
+      },
+      fontFamily: {
+        "my-font": ['League Spartan']
+      }
     },
   },
   plugins: [],
