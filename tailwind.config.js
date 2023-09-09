@@ -17,7 +17,7 @@ module.exports = {
         rem: "12px"
       },
       fontFamily: {
-        "my-font": ['League Spartan']
+        "my-font": ['Be Vietnam Pro', 'sans-serif']
       }
     },
   },
