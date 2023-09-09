@@ -5,11 +5,60 @@ import hero1 from "@/assets/images/desktop-image-hero-1.jpg"
 import hero2 from "@/assets/images/desktop-image-hero-2.jpg"
 import hero3 from "@/assets/images/desktop-image-hero-3.jpg"
 import Text from "./Text"
-import ShopNow from "./ShopNow"
 import leftArrow from "@/assets/images/icon-angle-left.svg"
 import rightArrow from "@/assets/images/icon-angle-right.svg"
+import { useState } from "react"
 
 function Hero() {
+
+    let [index, setIndex] = useState(0)
+
+    const slideShow = _ => {
+        setIndex(++index)
+        if (index === 3) {
+            setIndex(index = 0)
+        }
+        
+        let allHeroImages = document.querySelectorAll(".hero-img"),
+        allHeroText = document.querySelectorAll(".hero-text")
+
+        allHeroImages.forEach(img => {
+            img.classList.add("hidden")
+        })
+
+        allHeroText.forEach(text => {
+            text.classList.add("hidden")
+        })
+        
+        allHeroImages[index].classList.remove("hidden")
+        allHeroText[index].classList.remove("hidden")
+
+    }
+
+    const slideShow2 = _ => {
+        setIndex(--index)
+        if (index === -1) {
+            setIndex(index = 2)
+        }
+        console.log(index)
+
+        let allHeroImages = document.querySelectorAll(".hero-img"),
+        allHeroText = document.querySelectorAll(".hero-text")
+
+        allHeroImages.forEach(img => {
+            img.classList.add("hidden")
+        })
+
+        allHeroText.forEach(text => {
+            text.classList.add("hidden")
+        })
+
+        allHeroImages[index].classList.remove("hidden")
+        allHeroText[index].classList.remove("hidden")
+
+
+    }
+
   return (
     <>
     <div className="grid grid-cols-12">
@@ -21,12 +70,12 @@ function Hero() {
             <Image className="hero-img hidden w-full h-auto" src={ hero3 } alt="image-desktop" />
 
             {/* arrows */}
-            <div className="absolute bottom-0 right-0 lg:-right-48 flex">
+            <div className="absolute bottom-0 right-0 lg:-right-[158px] flex">
 
-                <button className="w-24 h-20 grid place-items-center bg-very-dark-gray hover:bg-dark-gray">
+                <button onClick={e => slideShow2(e)} className="w-[79px] h-20 grid place-items-center bg-very-dark-gray hover:bg-dark-gray">
                     <Image src={ leftArrow } alt="left-arrow" />
                 </button>
-                <button className="w-24 h-20 grid place-items-center bg-very-dark-gray hover:bg-dark-gray">
+                <button onClick={e => slideShow(e)} className="w-[79px] h-20 grid place-items-center bg-very-dark-gray hover:bg-dark-gray">
                     <Image src={ rightArrow } alt="right-arrow" />
                 </button>
 
@@ -36,7 +85,7 @@ function Hero() {
 
         <div className="col-span-12 lg:col-span-5 grid place-items-center">
             
-            <div className="hero-text mt-5">
+            <div className="hero-text">
                 
                 <Text
                     addHeadingClass={ "" }
@@ -45,33 +94,27 @@ function Hero() {
                     para={ "We provide unmatched quality, comfort, and style for property owners across the country. Our experts combine form and function in bringing your vision to life. Create a room in your own style with our collection and make your property a reflection of you and what you love." }
                 />
 
-                <ShopNow />
-
             </div>
 
             <div className="hero-text hidden">
                 
                 <Text
-                    addHeadingClass={ "text-[4rem] md:text-3xl md:leading-[2] lg:text-[4rem] lg:leading-[1.4]" }
+                    addHeadingClass={ "" }
                     heading={ "We are available all across the globe" }
                     addParaClass={ "" }
                     para={ " With stores all over the world, it's easy for you to find furniture for your home or place of business. Locally, we’re in most major cities throughout the country. Find the branch nearest you using our store locator. Any questions? Don't hesitate to contact us today." }
                 />
 
-                <ShopNow />
-
             </div>
 
             <div className="hero-text hidden">
                 
                 <Text
-                    addHeadingClass={ "text-[4rem] md:text-3xl md:leading-[2] lg:text-[4rem] lg:leading-[1.4]" }
+                    addHeadingClass={ "" }
                     heading={ "Manufactured with the best materials" }
                     addParaClass={ "" }
                     para={ "Our modern furniture store provide a high level of quality. Our company has invested in advanced technology to ensure that every product is made as perfect and as consistent as possible. With three decades of experience in this industry, we understand what customers want for their home and office." }
                 />
-
-                <ShopNow />
 
             </div>
 
